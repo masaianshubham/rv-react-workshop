@@ -23,6 +23,12 @@ const handleCompleteTask = (index) => {
   setTasks(newTasks)
 }
 
+const handleDeleteTask = (index) => {
+  const newTasks = [...tasks];
+  newTasks.splice(index, 1);
+  setTasks(newTasks)
+}
+
   
   return (
     <>
@@ -30,7 +36,7 @@ const handleCompleteTask = (index) => {
       <input onChange={handlechange} value={task} type="text" placeholder="Add a task" />
       <button onClick={handleAddTask}>Add</button>
       {tasks.map(({name,state}, index) => (
-        <Cards key={index} id={index} name={name} state={state} markComplete={handleCompleteTask} />
+        <Cards key={index} id={index} name={name} state={state} markComplete={handleCompleteTask} deleteTask={handleDeleteTask} />
       ))}
 
     </>
